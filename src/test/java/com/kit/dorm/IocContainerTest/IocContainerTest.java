@@ -62,4 +62,18 @@ public class IocContainerTest {
 
         assertThat(memberService1).isSameAs(memberService2);
     }
+
+    @Test
+    void ThreadNotSafetyTest(){
+        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(SingletonConfig.class);
+
+        DeliveryService sharedService1 = ac.getBean("sharedService", DeliveryService.class);
+        sharedService1.deliveryStart("디지털관");
+
+        DeliveryService sharedService2 = ac.getBean("sharedService", DeliveryService.class);
+        sharedService2.deliveryStart("글로벌관");
+
+        System.out.println("sharedService1 = " + sharedService1.getAddress());
+
+    }
 }
