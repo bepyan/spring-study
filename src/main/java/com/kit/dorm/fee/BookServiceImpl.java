@@ -3,7 +3,9 @@ package com.kit.dorm.fee;
 import com.kit.dorm.book.Book;
 import com.kit.dorm.book.DormName;
 import com.kit.dorm.member.Member;
+import org.springframework.stereotype.Component;
 
+@Component
 public class BookServiceImpl implements BookService{
     // private final FeePolicy feePolicy = new OldFeePolicy();
     private final FeePolicy feePolicy;

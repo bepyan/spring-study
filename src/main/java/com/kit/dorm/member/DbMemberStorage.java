@@ -1,8 +1,11 @@
 package com.kit.dorm.member;
 
+import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
 public class DbMemberStorage implements MemberStorage {
     private static Map<Long,Member> members = new HashMap<>();
 
