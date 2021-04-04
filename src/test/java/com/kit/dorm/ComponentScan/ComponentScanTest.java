@@ -13,6 +13,7 @@ public class ComponentScanTest {
         AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(ComAppConfig.class);
 //        MemberService memberService = ac.getBean(MemberService.class);
         Object memberService = ac.getBean("memberServiceImpl");
+        System.out.println("memberService = " + memberService);
         assertThat(memberService).isInstanceOf(MemberService.class);
     }
 }

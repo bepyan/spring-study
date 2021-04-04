@@ -2,6 +2,7 @@ package com.kit.dorm.member;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -12,6 +13,10 @@ public class MemberServiceImpl implements MemberService {
     // private final MemberStorage memberStorage = new FileMemberStorage();
     /* 코드 수정 사항이 불가피한 단점이 존재(OCP 준수 X) => AppConfig로 해결(의존성 주입) */
     private final MemberStorage memberStorage;
+
+//    public MemberServiceImpl(@Qualifier("subMemberStoragy") MemberStorage memberStorage) {
+//        this.memberStorage = memberStorage;
+//    }
 
     @Override
     public void register(Member member) {
