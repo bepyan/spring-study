@@ -1,8 +1,7 @@
 package com.kit.dorm.member;
 
+import com.kit.dorm.annotation.ElapsedTimeLog;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -19,10 +18,12 @@ public class MemberServiceImpl implements MemberService {
 //    }
 
     @Override
+    @ElapsedTimeLog
     public void register(Member member) {
         memberStorage.store(member);
     }
     @Override
+    @ElapsedTimeLog
     public Member findMember(Member member) {
         return memberStorage.findById(member.getId());
     }
