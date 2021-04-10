@@ -1,11 +1,17 @@
 package com.kit.dorm.member;
 
+import lombok.EqualsAndHashCode;
+
+@EqualsAndHashCode
 public class Member {
     private Long id;
     private String name;
     private int grade;
 
     public Member(Long id, String name, int grade) {
+        if(grade>4 || grade<1){
+            throw new IllegalArgumentException("학년은 1이상 4이하여야 함");
+        }
         this.id = id;
         this.name = name;
         this.grade = grade;

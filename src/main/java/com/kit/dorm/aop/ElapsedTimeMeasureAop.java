@@ -9,12 +9,12 @@ import org.springframework.util.StopWatch;
 @Aspect
 @Component
 public class ElapsedTimeMeasureAop {
-//    @Around("execution(* com.kit.dorm..*(..))")
+    //    @Around("execution(* com.kit.dorm..*(..))")
     @Around("@annotation(com.kit.dorm.annotation.ElapsedTimeLog)")
-    public Object execute(ProceedingJoinPoint joinPoint) throws Throwable{
+    public Object execute(ProceedingJoinPoint joinPoint) throws Throwable {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
-        try{
+        try {
             Object result = joinPoint.proceed();
             return result;
         } finally {
@@ -23,3 +23,4 @@ public class ElapsedTimeMeasureAop {
         }
     }
 }
+
