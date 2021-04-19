@@ -1,0 +1,9 @@
+name: spring2
+spring:
+  output:
+    ansi:
+      enabled: always
+logging:
+  level:
+    root: warn
+    jpabook.jpashop.study.springboot: trace
