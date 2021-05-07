@@ -1,0 +1,37 @@
+package jpabook.jpashop.service;
+
+import jpabook.jpashop.domain.*;
+import jpabook.jpashop.domain.item.Item;
+import jpabook.jpashop.repository.MemberRepository;
+import jpabook.jpashop.repository.OrderRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+
+@Service
+@Transactional
+@RequiredArgsConstructor
+public class OrderService {
+    private final MemberRepository memberRepository;
+    private final OrderRepository orderRepository;
+    private final ItemService itemService;
+
+    // 익히는 것이 중요! (도메인 모델 패턴)
+    public Long Order(Long memberId, Long itemId, int quantity){
+        Member member = memberRepository.findOne(memberId);
+        Item item = itemService.findOne(itemId);
+
+        Delivery delivery = new Delivery();
+        delivery.setAddress(member.getAddress());
+
+        OrderItem orderItem = OrderItem.creatOrderItem(item, item.getPrice(), quantity);
+        Order order = Order.createOrder(member, delivery, orderItem);
+        orderRepository.save(order);
+        return order.getId();
+    }
+    public void cancelOrder(Long orderId){
+        Order order = orderRepository.findOne(orderId);
+        order.cancel();
+    }
+}
