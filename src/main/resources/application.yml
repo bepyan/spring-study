@@ -8,6 +8,8 @@ spring:
     username: sa
     password:
     driver-class-name: org.h2.Driver
+  mustache:
+    suffix: .html
   jpa:
     hibernate:
       ddl-auto: create

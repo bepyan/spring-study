@@ -12,7 +12,7 @@ public class JpashopApplication {
 //		 SpringApplication.run(JpashopApplication.class, args);
 		SpringApplication app = new SpringApplication(JpashopApplication.class);
 //		app.setWebApplicationType(WebApplicationType.SERVLET);
-		app.addListeners(new StartingEvent());
+//		app.addListeners(new StartingEvent());
 		app.run(args);
 	}
 
