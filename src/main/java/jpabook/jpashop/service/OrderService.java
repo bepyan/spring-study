@@ -18,7 +18,7 @@ public class OrderService {
     private final ItemService itemService;
 
     // 익히는 것이 중요! (도메인 모델 패턴)
-    public Long Order(Long memberId, Long itemId, int quantity){
+    public Long order(Long memberId, Long itemId, int quantity){
         Member member = memberRepository.findOne(memberId);
         Item item = itemService.findOne(itemId);
 
@@ -34,4 +34,5 @@ public class OrderService {
         Order order = orderRepository.findOne(orderId);
         order.cancel();
     }
+
 }
