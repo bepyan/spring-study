@@ -12,7 +12,8 @@ spring:
     suffix: .html
   jpa:
     hibernate:
-      ddl-auto: create
+#      ddl-auto: create # 매번 테이블을 생성한다.
+      ddl-auto: none
     properties:
       hibernate:
         show_sql: true

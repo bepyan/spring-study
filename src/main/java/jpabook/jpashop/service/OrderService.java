@@ -8,11 +8,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
 @RequiredArgsConstructor
 public class OrderService {
+
     private final MemberRepository memberRepository;
     private final OrderRepository orderRepository;
     private final ItemService itemService;
@@ -35,4 +37,7 @@ public class OrderService {
         order.cancel();
     }
 
+    public List<Order> findOrders(OrderSearch orderSearch) {
+        return orderRepository.findAll(orderSearch);
+    }
 }
