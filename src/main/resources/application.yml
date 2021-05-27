@@ -11,6 +11,7 @@ spring:
   mustache:
     suffix: .html
   jpa:
+    open-in-view: false # DB 커넥션 자원을 아끼기 위해 보통 꺼놔야한다.
     hibernate:
 #      ddl-auto: create # 매번 테이블을 생성한다.
       ddl-auto: none
@@ -18,6 +19,7 @@ spring:
       hibernate:
         show_sql: true
         format_sql: true
+        default_batch_fetch_size: 50 # where 쿼리에 IN 연산이 발생, 한번에 사이즈만큼 가져온다. # 기본적으로 켜놓자.
 logging:
   level:
     root: warn

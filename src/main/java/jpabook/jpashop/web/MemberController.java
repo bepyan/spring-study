@@ -55,7 +55,9 @@ public class MemberController {
     @GetMapping("/members")
     public String list(Model model){
         List<Member> members = memberService.findMembers();
-        model.addAttribute("members", members);
+        // OSIV를 끄면 lazy로딩이 veiw controller에서 사용할 수 없기에 에러가 발생한다.
+//        System.out.println("order data = " + members.get(0).getOrders().get(0).getOrderDate());
+//        model.addAttribute("members", members);
         return "members/member-list";
     }
 }
