@@ -62,15 +62,21 @@ public class ItemController {
 
     @PostMapping("/item/edit")
     public String updateItem(BookForm form){
-        Book book = new Book();
-        book.setId(form.getId());
-        book.setName(form.getName());
-        book.setPrice(form.getPrice());
-        book.setStockQuantity(form.getStockQuantity());
-        book.setAuthor(form.getAuthor());
-        book.setIsbn(form.getIsbn());
 
-        itemService.saveItem(book);
+//        // 준영속 상태이다.
+//        Book book = new Book();
+//        book.setId(form.getId());
+//        book.setName(form.getName());
+//        book.setPrice(form.getPrice());
+//        book.setStockQuantity(form.getStockQuantity());
+//        book.setAuthor(form.getAuthor());
+//        book.setIsbn(form.getIsbn());
+//
+//        itemService.saveItem(book);
+
+        // 트랜젝션은 서비스안에서 한번에 이뤄지는게 좋다.
+        // 영속성 컨텍스트와 관련없는 엔티티가 올 수 있기 때문.
+        itemService.updateItem(form.getId(), form.getName(), form.getPrice(), form.getStockQuantity());
         return "redirect:/items";
     }
 }

@@ -27,4 +27,13 @@ public class ItemService {
         return itemRepository.findOne(itemId);
     }
 
+    @Transactional
+    public void updateItem(Long id, String name, int price, int stockQuantity){
+        Item findItem = itemRepository.findOne(id);
+        // 메소드 레벨에서 한번에 처리하는게 바름직하죠?
+        findItem.setPrice(price);
+        findItem.setName(name);
+        findItem.setStockQuantity(stockQuantity);
+    }
+
 }
