@@ -11,6 +11,23 @@ import java.util.*;
 @Entity
 @Getter
 @Setter
+@NamedQuery(
+        name="Member.findByName",
+        query = "select m from Member m where name = :name"
+)
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = "Member.findByName",
+                        query = "select m from Member m where m.teamId = :teamId"
+                ),
+                @NamedQuery(
+                        name = "Member.findByTeamId",
+                        query = "select m from Member m where m.teamId = :teamId"
+                )
+        }
+)
+
 public class Member {
 
     @Id @GeneratedValue
